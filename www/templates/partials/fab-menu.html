@@ -1,0 +1,12 @@
+<ion-popover-view class="menu-popover-fab">
+  <ion-content>
+    <div class="list">
+      <a class="item" href="javascript:;" ng-click="fab_menu.hide();loadFilePreview();" ng-if="!showPreview">
+        <i class="ion-eye"></i><span class="text" >&nbsp;&nbsp;{{'File_Preview'|translate}}</span>
+      </a>
+      <a class="item" href="javascript:;" ng-click="fab_menu.hide();downloadFile();">
+        <i class="ion-android-download"></i><span class="text">&nbsp;&nbsp;{{'download'|translate}}</span>
+      </a>
+    </div>
+  </ion-content>
+</ion-popover-view>

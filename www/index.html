@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src *; img-src &apos;self&apos; * data: blob:; script-src &apos;self&apos; &apos;unsafe-inline&apos; &apos;unsafe-eval&apos; *; style-src  &apos;self&apos; &apos;unsafe-inline&apos; *">-->
+      <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' gap://ready file://* *; font-src * data:; img-src * data:; style-src * 'self' 'unsafe-inline'; script-src * 'self' 'unsafe-inline' 'unsafe-eval' ">-->
+    <title></title>
+      <!--<link href="css/framework.css" rel="stylesheet">-->
+      <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/ionic-custom.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/mfb-custom.css" rel="stylesheet">
+    <link href="lib/wow/css/libs/animate.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
+    <script src="lib/ionic-close-popup/ionic-close-popup.js"></script>
+
+    <!-- Angular translate -->
+    <script src="lib/angular-translate/angular-translate.js"></script>
+    <script src="lib/angular-translate-loader-url/angular-translate-loader-url.js"></script>
+    <script src="lib/angular-messages/angular-messages.js"></script>
+	<!-- Do we need JQuery here??? -->
+    <script src="lib/jquery/dist/jquery.js"></script>
+  
+	<!--Ionic autocomplete control -->
+    <script src="lib/ion-autocomplete/dist/ion-autocomplete.js"></script>
+	<link href="lib/ion-autocomplete/dist/ion-autocomplete.css" rel="stylesheet">
+	
+	<!-- Underscore stuff -->
+	<script src="lib/underscore/underscore-min.js"></script>
+  <script src="lib/angular-underscore-module/angular-underscore-module.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="js/ng-cordova.js"></script>
+    <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
+    <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
+	<script type="text/javascript" src="cordova.js"></script>
+    <script src="lib/ng-mfb/src/mfb-directive.js"></script>
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers/fileDetailsCtrl.js"></script>
+    <script src="js/controllers/homeCtrl.js"></script>
+    <script src="js/controllers/showFileCtrl.js"></script>
+    <script src="js/controllers/tabs/myFileCtrl.js"></script>
+    <script src="js/controllers/tabs/myShareCtrl.js"></script>
+    <script src="js/controllers/tabs/myShareDetailCtrl.js"></script>
+    <script src="js/controllers/tabs/deletedFileCtrl.js"></script>
+    <script src="js/controllers/tabs/shareDetailCtrl.js"></script>
+    <script src="js/controllers/loginCtrl.js"></script>
+    <script src="js/controllers/hostCtrl.js"></script>
+    <script src="js/controllers/createFolderCtrl.js"></script>
+    <script src="js/controllers/passwordChangeCtrl.js"></script>
+    <script src="js/controllers/passwordResetCtrl.js"></script>
+    <script src="js/controllers/twoFactorAuthCtrl.js"></script>
+    <script src="js/controllers/forgotPasswordCtrl.js"></script>
+    <script src="js/controllers/tabs/myShareDetailCtrl.js"></script>
+    <script src="js/controllers/showFileCtrl.js"></script>
+    <script src="js/controllers/previewCtrl.js"></script>
+    <script src="js/controllers/tabs/activity/activityCtrl.js"></script>
+    <script src="js/controllers/tabs/activity/activityDetailCtrl.js"></script>
+    
+    <script src="js/directives/filePreview.js"></script>
+    <script src="js/directives/focus.js"></script>
+    <script src="js/directives/myRefresh.js"></script>
+    <script src="js/directives/appVersion.js"></script>
+    <script src="js/factories/authInterceptor.js"></script>
+    <script src="js/factories/homeFactory.js"></script>
+    <script src="js/factories/localStorage.js"></script>
+    <script src="js/factories/customLoader.js"></script>
+    <script src="js/factories/uploadFactory.js"></script>
+    <script src="js/filters/bytes.js"></script>
+    <script src="js/filters/truncateWithEllipsis.js"></script>
+    <script src="js/filters/dateConversion.js"></script>
+    <script src="js/services/DownloadManager.js"></script>
+    <script src="js/services/homeService.js"></script>
+  	<script src="js/services/AuthService.js"></script>
+    <script src="js/services/FileService.js"></script>
+    <script src="js/values.js"></script>
+    
+    <script src="lib/wow/dist/wow.js"></script>
+    <script src="lib/ng-flow/dist/ng-flow-standalone.min.js"></script>
+  <script>
+      new WOW().init();
+  </script>
+  </head>
+  <body ng-app="zyber">
+    <ion-pane>
+     <!-- <ion-nav-bar class="bar-stable">
+       <ion-nav-title align-title="center">
+         <img src="img/icons/zyber-logo.png" class="logo-img" alt="" >
+       </ion-nav-title>
+      
+     </ion-nav-bar> -->
+      <ion-spinner class="loading-wrap" icon="spiral" ng-show="initializing"></ion-spinner>
+      <ion-nav-view ng-show="initializing"></ion-nav-view>
+    </ion-pane>
+    
+  	<!-- <ion-footer-bar align-title="left" class="bar-assertive">
+  	  <small>App v<span app-version></span></small>
+  	</ion-footer-bar> -->
+
+    <!--<script id="modalLogin.html" type="text/ng-template">
+		  <ng-include src="'templates/loginView.html'"></ng-include>
+    </script>
+    <script id="settingsView.html" type="text/ng-template">
+		  <ng-include src="'templates/settings.html'"></ng-include>
+    </script> -->
+  </body>
+</html>

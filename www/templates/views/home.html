@@ -1,0 +1,50 @@
+<ion-view style="background-color:#ffffff;z-index:999;" class="home_page">
+
+    <div class="swipe2">
+        <img style="margin-left: 43%;" class="swipe_page" src="img/allow_right.gif" ng-click="next()" ng-if="slideIndex < 2" ng-style= "nextimgstyle();">
+        <img style="margin-left: 0%;" class="swipe_page" src="img/allow_left.gif" ng-click="previous()" ng-if="slideIndex > 0"
+        ng-style= "previousimgstyle();">
+    </div>
+	<ion-slide-box on-slide-changed="slideChanged(index)">
+		<ion-slide>
+            <!-- skip button and next page-->
+            <div class="logo">
+                <img src="img/zyber-logo-white.png">
+            </div>
+            <h1 class="welcome" android:fontFamily="cursive" android:textStyle="bold">Welcome to MyZyber!</h1>
+            <div class="detail">
+				<p><i class="fa fa-check-square-o" style="color:#00a1f1;"></i> Upload your files from phone or </p>
+				<p><i class="fa fa-check-square-o" style="color:#00a1f1;"></i> Share it with the people you want</p>
+				<p><i class="fa fa-check-square-o" style="color:#00a1f1;"></i> Keep track of the activity</p>
+			</div>
+            <a class="button button_icon button-blue skip_btn" ng-click="skipSlide()" ng-show="!slideIndex">
+                <i class="fa fa-hand-o-right"></i>
+                Skip
+            </a>
+		</ion-slide>
+
+		<ion-slide>
+            <div class="intro">
+				<img class="intro" src="img/intro-1.png">
+                <h3>Swipe to get options</h3>
+            </div>
+		</ion-slide>
+
+		<ion-slide>
+            <div  class="swipe3">
+                <img src="img/intro3.png" style="max-width:100%;">
+                <h3>Share and track Activity</h3>
+            </div>
+            <div class="sign">
+                <a class="button button_icon button-blue" ng-click="startApp()"  ng-show="slideIndex == 2">
+                    <i class="fa fa-sign-in"></i>
+                    Login
+                </a>
+                <a class="button button_icon button-blue" ng-click="inAppBrowser()">
+                    <i class="fa fa-pencil-square-o"></i>
+                    SignUp
+                </a>
+            </div>
+        </ion-slide>
+	</ion-slide-box>
+</ion-view>

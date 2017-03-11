@@ -1,0 +1,48 @@
+  <ion-view id="createFolderModal">
+
+    <ion-header-bar style="background-color:#004177; background-image:none;">
+        <!-- <a ng-click="cancel()" class="back-text"><i class="ion-chevron-left"></i>&nbsp;{{"Back" | translate}}</a> -->
+      <div class="buttons buttons-left">
+        <a ng-click="cancel()" class="button button-light button-clear no-animation">
+          <i class="ion-chevron-left"></i>
+        </a>
+      </div>
+      <div class="title title-left header-ilohtem">
+      {{"create.folder" | translate}}<br>
+      <small>{{host}}</small>
+      </div>
+    </ion-header-bar>
+    <!-- <ion-header-bar align-title="left" class="bar-subheader bar-stable" style="top:43px !important;">
+        <a ng-click="cancel()" class="back-text"><i class="ion-chevron-left"></i>&nbsp;{{"Back" | translate}}</a>
+    </ion-header-bar> -->
+
+    <ion-content class="forget-pass">
+          <form role="form" novalidate="" name="createFolder">
+            <div class="list create-fld">
+              <label class="item item-input" ng-class="{ 'has-errors' : createFolder.folderName.$invalid, 'no-errors' : createFolder.folderName.$valid}">
+                <!-- <span class="input-label">{{"folder_name"|translate}}</span> -->
+                <input type="text" name="folderName" ng-model="folder.folderName" ng-pattern='/^[^\/:?*"|]+$/' required placeholder={{"folder_name"|translate}}>
+              </label>
+               
+              <div class="error-container" ng-show="createFolder.folderName.$error" ng-messages="createFolder.folderName.$error">
+              </div>
+            </div>
+          </form>
+          <ion-spinner class="loading-wrap" icon="spiral" ng-show="loading"></ion-spinner>
+          
+          <div class="padding" style="text-align:center;">
+            <button class="btn-primary" ng-click="doCreateFolder(folder.folderName)" ng-disabled="createFolder.$invalid"> {{"save"|translate}} </button> &nbsp;
+            <a ng-click="cancel()" class="cancel-btn">{{"cancel"|translate |uppercase}}</a>
+          </div>
+    </ion-content>
+    <!-- <ion-footer-bar>
+      <div class="button-bar">
+          <button class="button mr-2_5" ng-click="cancel()">
+            {{"cancel"|translate}}
+          </button>
+          <button class="button btn-primary button-positive ml-2_5" ng-click="doCreateFolder(folder.folderName)" ng-disabled="createFolder.$invalid">
+            {{"save"|translate}}
+          </button>
+      </div>
+    </ion-footer-bar> -->
+</ion-view>

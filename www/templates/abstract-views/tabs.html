@@ -1,0 +1,31 @@
+<!-- <ion-tabs class="tabs-striped tabs-top menu-tabs tabs-background-positive tabs-color-custom">
+
+	<ion-tab title="{{'home'|translate}}" href="#/home/" on-deselect="clearHistory()">
+		<ion-nav-view name="tab-home"></ion-nav-view>
+	</ion-tab>
+
+	<ion-tab title="{{'shares'|translate}}" href="#/shares/" on-deselect="clearHistory()">
+		<ion-nav-view name="tab-shares"></ion-nav-view>
+	</ion-tab>
+tabs-positive tabs-icon-top
+</ion-tabs> -->
+
+<ion-tabs class="tabs-positive tabs-icon-top">
+    <ion-tab title="{{'My Files'|translate}}"  href="#/my-file/" icon-on="icon ion-camera" icon-off="icon ion-camera" on-deselect="clearHistory()">
+  	 <ion-nav-view name="tab-my-file"></ion-nav-view>
+        <!-- Tab 1 content -->
+    </ion-tab>
+
+    <ion-tab title="{{'My Shares'|translate}}" href="#/my-share/" icon-on="icon ion-share" icon-off="icon ion-share" on-deselect="clearHistory()">
+        <!-- Tab 2 content -->
+        <ion-nav-view name="tab-my-shares"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="{{'Activity'|translate}}" href="#/my-activity/" icon-on="icon ion-compose" icon-off="icon ion-compose" on-deselect="clearHistory()">
+        <!-- Tab 2 content -->
+        <ion-nav-view name="tab-my-activity"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="{{'Delete'|translate}}" ui-sref="app.my-deleted" icon-on="icon ion-android-delete" icon-off="icon ion-android-delete" on-deselect="clearHistory()">
+        <!-- Tab 2 content -->
+        <ion-nav-view name="tab-deleted"></ion-nav-view>
+    </ion-tab>
+</ion-tabs>

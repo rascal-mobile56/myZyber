@@ -1,0 +1,37 @@
+<ion-spinner class="loading-wrap" icon="spiral" ng-show="loading"></ion-spinner>
+<ion-view ng-show="!loading" cache-view="false" view-title="{{pageTitle}}">
+	<ion-nav-buttons side="left">
+		<button class="button button-light button-clear no-animation" 
+			ng-click="myGoBack()" ng-if="showBack">
+			<i class="ion-chevron-left"></i>
+		</button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+  		<a class="button button-light button-clear no-animation" ng-click="popover.show($event)"><i class="ion-navicon-round" style="font-size: 22px;"></i></a>
+  	</ion-nav-buttons>
+	<ion-content class="has-header main-page" delegate-handle="mainScroll" overflow-scroll=”true” id="scrollWrapper">
+		<ion-list ng-if="files.length != 0" show-delete="shouldShowDelete" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
+			<ion-item collection-repeat="file in files" class="item-button-right file-item" ng-class="{'swipe-disabled' : file.isDirectory}"  ng-click="deleteItem(file.thumbnailLink,file.uuid, file.isDirectory, file.name);">
+				<div class="file-name-wrap" >
+					<span class="img-wrap" class="delete-file">
+						<img  ng-if="file.isDirectory" src="img/icons/folder.png">
+                        <img  ng-if="!file.isDirectory && !file.thumbnailLink" src="img/icons/blank.png">
+						<img  ng-if="!file.isDirectory && file.thumbnailLink" src="{{file.thumbnailLink}}">
+					</span>&nbsp;{{file.name | truncateWithEllipsis:28}}
+		  		</div>
+				<a ng-if="file.isDirectory"  class="button" ng-attr-href="{{file.isDeleted ? undefined : '#/' + 'my-deleted' + '/' +file.uuid }}">
+					<i class="ion-ios-arrow-forward"></i>
+				</a>
+				<!-- <ion-option-button class="button-assertive" ng-show="!file.isDirectory"
+					ng-click="deleteItem(file.uuid, file.isDirectory);">
+					Delete
+				</ion-option-button> -->
+			</ion-item>
+		</ion-list>
+		<div ng-if="files.length == 0 && currentView() == 'home' && !loading" class="message-wrap">
+            <img src="img/icons/folder.png" class="message-img">
+            <p class="message-text">{{"no_folder_present" | translate}}</p>
+            <p class="message-text-detail">{{"no_home_files" | translate}}</p>
+    	</div>
+	</ion-content>
+</ion-view>

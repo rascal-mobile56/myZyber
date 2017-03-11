@@ -1,0 +1,49 @@
+<ion-view cache-view="false" title="{{pageTitle}}">
+    <ion-content style="text-align:center;">
+        <div class="passwd-sub-heading">
+            <span><h4>Two-factor authentication</h4></span>
+        </div>
+        <div class="list">
+            <div class="row">
+                <div class="col">
+                    <span>Enter the code you have recieved</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col col-50">
+                    <label class="item item-input">
+                        <input type="text" placeholder="SMS Code" ng-model="smsCode.code" style="text-align:center;">
+                    </label>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="padding" style="text-align:center;">
+                <button class="btn-primary" ng-click="verifyCode()"> Verify </button> &nbsp;
+                <a ng-click="sendSMS()" class="cancel-btn">RESEND SMS</a>
+            </div>
+            <div class="row" ng-if="SMSSent">
+                <div class="list list-inset col col-100">
+                    <div class="item alert-info button-full">
+                        Your SMS has been sent
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-if="showWaiting">
+                <div class="list list-inset col col-100">
+                    <div class="item alert-info button-full row">
+                        <div class="col col-60 col-offset-20">Verifying your code</div>
+                        <div class="col col-10"><ion-spinner icon="dots"></ion-spinner></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-if="showError">
+                <div class="list list-inset col col-100">
+                    <div class="item alert-danger button-full">
+                        {{errorMessage}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

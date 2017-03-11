@@ -1,0 +1,21 @@
+
+<ion-view  style="background-color:#ffffff;z-index:999;">
+
+    <ion-scroll direction="y" style="right: 0;bottom: 0;left: 0;position: absolute;" class="has-header has-subheader form-container login-page">
+        <div class="form-wrap">
+            <div class="logo" >
+                    <img src="img/zyber-logo-white.png" style="max-height:44px;" alt="" >
+                    <h1 class="welcome">Welcome to MyZyber!</h1>
+            </div>
+            <div class="host_cell">
+                <h4 class="check-domain">Please check your email for the domain you activated after sign up</h4>
+                <p class="placeholder-icon prefix-text host_list"><i class="ion-earth host_input"></i>https://</p>
+                <input  type="text" ng-model="settings.hostname" class="host_server">
+                <!--<span class="zybercom host_list">.zyber.com</span>-->
+            </div>
+            <div class="padding" style="text-align:center;">
+                <button class="btn-primary save_button" ng-click="saveSettings(settings)"><i style="font-size: 20px;" class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;
+                            {{showSub?('save' | translate):'Save Host'}}<ion-spinner icon="spiral" ng-if="loading"></ion-spinner></button> &nbsp;</div>
+        </div>
+    </ion-scroll>
+</ion-view>

@@ -1,0 +1,47 @@
+<ion-modal-view>
+  <ion-header-bar class="download-header">
+    <h1 class="title">{{"download_status" | translate}}</h1>
+  </ion-header-bar>
+  <ion-content class="download-status-page">
+		<div class="download-list-wrapper">
+			<ul class="list details-list">
+        <li class="item" ng-repeat="file in downloadHistory track by $index">
+          <div class="item-name">{{file.file.name || 'root directory' |truncateWithEllipsis:30}}</div>
+          <a ng-show="file.downloaded" class="download-complete-icon"><i class="ion-checkmark"></i></a>
+          <a ng-hide="file.downloaded" class="download-failed-icon"><i class="ion-alert-circled"></i></a>
+          <p ng-hide="file.downloaded">
+            {{file.message}}
+          </p>
+        </li>
+				<li class="item" ng-repeat="file in downloadedFiles track by $index" ng-if="!showIOSBar">
+					<div class="item-name">{{file.file.name || 'root directory' |truncateWithEllipsis:30}}</div>
+          <a ng-show="file.progress != 100" ng-click="abortDownload(file, $index)" class="abort-button"><i class="ion-close"></i></a>
+					<a ng-show="file.progress == 100" class="download-complete-icon"><i class="ion-checkmark"></i></a>
+          <progress ng-value="file.progress" max="100"></progress>
+          <span ng-hide="file.file.isDirectory">{{(file.file.size * file.progress/100) | bytes}} of {{file.file.size | bytes}} {{'downloaded'|translate}}.({{formatNumber(file.progress) || 0}}%)</span>
+          <span ng-show="file.file.isDirectory">{{(file.size * file.progress/100) | bytes}} of {{file.size | bytes}} {{'downloaded'|translate}}.({{formatNumber(file.progress) || 0}}%)</span>
+				</li>
+        <li class="item" ng-repeat="file in downloadedFiles track by $index" ng-if="showIOSBar">
+          <div class="item-name">{{file.file.name || 'root directory' |truncateWithEllipsis:30}}</div>
+          <a ng-show="file.progress != 100" ng-click="abortDownload(file, $index)" class="abort-button"><i class="ion-close"></i></a>
+          <a ng-show="file.progress == 100" class="download-complete-icon"><i class="ion-checkmark"></i></a>
+          <span class="ios-status-bar" ng-if="showIOSBar">
+            <img src="img/processing.gif" class="img-width-100" ng-hide="file.startDownload">
+            <text ng-show="file.startDownload">{{'downloading'|translate}}</text>
+          </span>
+          <span>{{'file_size' |translate}}: {{(file.file.isDirectory?file.size:file.file.size) | bytes}}</span>
+        </li>
+			</ul>
+    </div>
+	</ion-content>
+	<ion-footer-bar>
+      <div class="button-bar">
+          <button class="button mr-2_5" ng-click="closeStatusModal()">
+            {{"close"|translate}}
+          </button>
+          <button class="button mr-2_5" ng-click="clearStatusHistory()">
+            {{"clear_history"|translate}}
+          </button>
+      </div>
+    </ion-footer-bar>
+</ion-modal-view>

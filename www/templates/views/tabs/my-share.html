@@ -1,0 +1,47 @@
+<ion-spinner class="loading-wrap" icon="spiral" ng-show="loading"></ion-spinner>
+
+<ion-view ng-show="!loading" cache-view="false" view-title="{{pageTitle}}">
+	<ion-nav-buttons side="left">
+		<button class="button button-light button-clear no-animation" 
+			ng-click="myGoBack()" ng-if="showBack" >
+			<i class="ion-chevron-left"></i>
+		</button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+  		<a class="button button-light button-clear no-animation" ng-click="popover.show($event)"><i class="ion-navicon-round" style="font-size: 22px;"></i></a>
+  	</ion-nav-buttons>
+	<ion-content class="has-header main-page" delegate-handle="mainScroll" overflow-scroll=”true” id="scrollWrapper">
+		<ion-list ng-if="files.length != 0" show-delete="shouldShowDelete" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
+			<ion-item collection-repeat="file in files" class="item-button-right file-item" ng-click="goToShareDetail(file.path.uuid, file.path.isDirectory, file.path.name);" item-height="55px" item-width="100%" >
+				<div class="file-name-wrap">
+					<span class="img-wrap" style="display: inline-block;">
+  						<img  ng-if="file.path.isDirectory" src="img/icons/folder.png">
+  						<img  ng-if="!file.path.isDirectory" src="{{file.iconFile}}">
+  					</span>&nbsp;{{file.path.name | truncateWithEllipsis:28}}
+		  		</div>
+
+				<!-- <a ng-if="!file.isDirectory" ng-attr-href="{{file.isDeleted ? undefined : '#/my-share-detail' + '/' +file.uuid }}" class="share-icon-wrap">
+					<i class="ion-android-people"></i>
+				</a> -->
+				<a ng-if="file.path.isDirectory"  class="button" ng-attr-href="{{file.path.isDeleted ? undefined : '#/' + 'my-share' + '/' +file.path.uuid }}">
+					<i class="ion-ios-arrow-forward"></i>
+				</a>
+  				<!-- <a ng-if="!file.path.isDirectory"  class="button" ng-attr-href="{{file.path.isDeleted ? undefined : '#/' + 'my-share-detail' + '/' +file.path.uuid }}">
+  					<i class="ion-ios-arrow-forward"></i>
+  				</a> -->
+
+				<ion-option-button class="button-positive"
+					ng-click="share(file.path.uuid)">Share</ion-option-button>
+				<ion-option-button class="button-info"
+					ng-click="edit(item)">
+					Delete
+				</ion-option-button>
+			</ion-item>
+		</ion-list>
+		<div ng-if="files.length == 0 && currentView() == 'shares' && !loading" class="message-wrap">
+            <img src="img/icons/renameDoc.png" class="message-img">
+            <p class="message-text">{{"no_file_present" | translate}}</p>
+            <p class="message-text-detail">{{"no_share_files" | translate}}</p>
+    	</div>
+	</ion-content>
+</ion-view>

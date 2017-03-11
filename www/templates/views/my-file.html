@@ -1,0 +1,77 @@
+<ion-spinner class="loading-wrap" icon="spiral" ng-show="loading"></ion-spinner>
+<ion-view ng-show="!loading" cache-view="false" view-title="{{pageTitle}}">
+    <ion-nav-buttons side="left">
+        <button class="button button-light button-clear no-animation"
+            ng-click="myGoBack()" ng-if="showBack">
+            <i class="ion-chevron-left"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <a class="button button-light button-clear no-animation" ng-click="popover.show($event)"><i class="ion-navicon-round" style="font-size: 22px;"></i></a>
+    </ion-nav-buttons>
+
+    <ion-content class="has-header has-fab-menu main-page" delegate-handle="mainScroll" overflow-scroll=”true” id="scrollWrapper">
+        <div style="display: inline-block;width: 50%;" ng-repeat="file in files" ng-class="{'swipe-disabled' : file.isDirectory}" >
+            <div on-hold="showActionsheet(file)" ng-click="openUp(file);" class="file-name-wrap1">
+                <img class="img-wrap" ng-if="file.isDirectory" src="img/icons/folder.png">
+                <!-- if getgiles urls is my files-->
+                <img  ng-if="!file.isDirectory && !file.thumbnailLink" src="img/icons/blank.png">
+                <img  ng-if="!file.isDirectory && file.thumbnailLink" src="{{file.thumbnailLink}}">
+                <!--if getfiles url is path-->
+                <!--<img class="img-wrap" ng-if="!file.isDirectory" src="{{file.iconFile}}">-->
+            </div>
+            <div class="file-surname">&nbsp;{{file.name | truncateWithEllipsis:22}}</div>
+
+            </div>
+        <div ng-if="files.length == 0 && currentView() == 'home' && !loading" class="message-wrap">
+            <img src="img/icons/folder.png" class="message-img">
+            <p class="message-text">{{"no_folder_present" | translate}}</p>
+            <p class="message-text-detail">{{"no_home_files" | translate}}</p>
+        </div>
+    </ion-content>
+
+
+    <div class="card download-sticker" ng-if=" (files.length >0) && (canDownload || downloadedFiles.length!=0) ">
+        <div class="item item-text-wrap">
+            <span class="item-text">
+
+                <div ng-if="canDownload"
+                    ng-style="downloadedFiles.length!=0 && {'margin-top':'-8px'}">{{'download'|translate}}{{' (' + selectedFileCount + ')'}}
+                </div>
+
+                <div ng-if="downloadedFiles.length!=0 && !canDownload"
+                    ng-style="downloadedFiles.length!=0 && {'margin-top':'-8px'}">{{'downloading'|translate}}
+                </div>
+
+                <div ng-if="downloadedFiles.length!=0" class="dots-loader">
+                    <ion-spinner icon="dots"></ion-spinner>
+                </div>
+            </span>
+            <button class="detail-icon" ng-click="showDownloadStatus()" style="font-size: 18px;" ng-if="downloadHistory.length || downloadedFiles.length" ><i class="ion-information-circled"></i></button>
+            <!-- <ion-spinner class="download-spinner" ng-if="downloadedFiles.length!=0" icon="spiral"></ion-spinner> -->
+            <button class="detail-icon" ng-click="downloadFiles()" ng-if="canDownload"><i class="ion-android-download"></i></button>
+        </div>
+    </div>
+    <!-- <div class="back-dark" ng-class="{expanded123: mfb_active}">
+        <div aria-label="menu" class="fab-btn" ng-init="mfb_active = false" >
+        </div>
+    </div> -->
+    <div class="backdrop" ng-class="{visible: mfb_active, active: mfb_active}"></div>
+    <div flow-init flow-object="obj.flow" flow-name="obj.flow"
+            flow-files-submitted="uploadFileSelected()"
+            flow-file-progress="fileUploadProgress($file)"
+            flow-complete="fileUploaded()"
+            flow-error="fileUploadError($file, $message)">
+
+        <nav mfb-menu position="br" effect="zoomin"
+             active-icon="ion-edit" resting-icon="ion-plus-round"
+             toggling-method="click"  main-action="$parent.mfb_active = !$parent.mfb_active;fabSelected()" menu-state="$parent.fabState" class="fab-btn" style="z-index: 51">
+            <button mfb-button icon="ion-folder" label="{{'create.folder'|translate}}" ng-click="openCreateFolder()" mfb-button-close></button>
+            <button mfb-button icon="ion-upload" label="{{'upload'|translate}}" ng-click="openUploadFile()" mfb-button-close flow-btn><div>test</div>
+            </button>
+            <button mfb-button icon="ion-camera" label="{{'camera'|translate}}" ng-show="isAdndriod" ng-click="takePicture()" mfb-button-close><div>test</div>
+            </button>
+        </nav>
+    </div>
+
+</ion-view>

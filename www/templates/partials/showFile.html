@@ -1,0 +1,39 @@
+<div>
+	<div ng-switch on="fileType" >
+    <div ng-switch-when="document" class="preview-inner">
+        <div class="preview-box">
+            <iframe src="{{'/viewer/document-viewer?path=' + file.uuid}}" width='100%' class="iframe-preview"
+                    height='95%' allowfullscreen webkitallowfullscreen id="iframe"></iframe>
+        </div>
+    </div>
+    <div ng-switch-when="video" class="preview-inner" >
+        <div class="preview-box">
+            <iframe src="{{'/media-preview/'+ file.uuid}}" width='100%' class="iframe-preview" height='700' allowfullscreen webkitallowfullscreen id="iframe" scrolling="auto" is-buffering></iframe>
+            <!-- <video width="480" controls is-buffering>
+              <source src="{{'/media-preview/'+ file.uuid}}" type="{{file.mimeType}}">
+              {{'unsupported_browser_video' | translate}}
+            </video> -->
+            <div id="placeholder" src="assets/images/support-loading.gif" class="placeholder"></div>
+        </div>
+    </div>
+    <div ng-switch-when="audio" class="preview-inner">
+        <div class="preview-box">
+            <iframe src="{{'/media-preview/'+ file.uuid}}" width='100%' class="iframe-preview" height='700' allowfullscreen webkitallowfullscreen id="iframe" scrolling="auto"></iframe>
+            <!-- <audio controls>
+              <source src="{{'/media-preview/'+ file.uuid}}" type="{{file.mimeType}}">
+              {{'unsupported_browser_audio' | translate}}
+            </audio> -->
+        </div>
+    </div>
+    <div ng-switch-default>
+        <div>
+            <div class="preview-inner">
+                <div class="preview-box">
+                    <img src="assets/images/blank.png">
+                    <h2>{{"no_file_poreview"|translate}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

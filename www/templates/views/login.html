@@ -1,0 +1,58 @@
+<ion-view style="background-color:#ffffff;z-index:999;transform: unset !important;">
+
+
+	<ion-scroll direction="y" style="right: 0;bottom: 0;left: 0;position: absolute;" class="has-header has-subheader form-container login-page">
+	<!-- <ion-content class="form-container wow bounceInUp bg-white" data-wow-duration="2s"> -->
+		
+		<div class="form-wrap">
+			<div class="login-form-inner">
+                <div class="logo logo_login" >
+                    <img src="img/zyber-logo-white.png" style="max-height:44px;" alt="" >
+                    <h1 class="welcome">Welcome to MyZyber!</h1>
+                </div>
+                <div class="reset_host">
+                    <p>https://&nbsp;&nbsp;<span class="host_name">{{settings.hostname}}</span>
+                        <!--<span style="min-width:90px;">.zyber.com</span>-->
+                    </p>
+
+                </div>
+                <a ng-click="resetHost()" class="reset_btn"><i class="fa fa-refresh fa-spin"></i>
+                    Reset Host</a>
+                <br>
+
+				<form class="login-form" style="margin-top: 15px;">
+                    <label class="item item-input">
+						  <span class="input-label ion-android-person"></span>
+						  <input type="email" focus ng-model="user.username" placeholder="Username">
+					</label>
+                    <br>
+					<label class="item item-input password_cell">
+                        <span class="input-label ion-ios-unlocked"></span>
+                        <input type="{{inputType}}" class="password_input" focus ng-model="user.password" placeholder="Password">
+
+					</label>
+                    <div class="show">
+                        <img src="img/hide.png" ng-if="passwordCheckbox" ng-click="hideShowPassword()">
+                        <img src="img/show.png" ng-if="!passwordCheckbox" ng-click="hideShowPassword()">
+                    </div>
+                    <br>
+
+					<label class="item item-input">
+                        <span class="input-label"></span>
+                        <input type="checkbox" focus ng-model="user.remember" checked> &nbsp;
+                        <span>Remember Me</span>
+					</label>
+                </form>
+				
+			</div>
+			<div class="fixed-footer-btn" >
+				<div class="reset-settings">
+					<a ng-click="forgotPassword()" style="color:#fff;" class="forget">Forgot Password</a>
+				</div>
+                <button class="button button-block login-button" ng-click="saveSettings()"><i style="font-size: 20px;" class="fa fa-sign-in" aria-hidden="true"></i>
+                    login<ion-spinner icon="spiral" ng-if="loading"></ion-spinner>
+				</button>
+			</div>
+		</div>
+	</ion-scroll>
+</ion-view>

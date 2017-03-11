@@ -1,0 +1,45 @@
+<ion-spinner class="loading-wrap" icon="spiral" ng-show="loading"></ion-spinner>
+
+<ion-view title="{{pageTitle}}" ng-show="!loading">
+	<ion-nav-buttons side="left">
+		<button class="button button-light button-clear no-animation" ng-click="myGoBack()">
+			<i class="ion-chevron-left"></i>
+		</button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+  		<a class="button button-light button-clear no-animation" ng-click="popover.show($event)"><i class="ion-android-more-vertical"></i></a>
+  	</ion-nav-buttons>
+		<ion-content class="has-header main-page" delegate-handle="mainScroll" overflow-scroll="true">
+				<ion-scroll direction="y" style="right: 0;bottom: 0;left: 0; top:0; position: absolute;">		
+				<div class="files-container">
+					<ul class="cbp_tmtimeline">
+						<li ng-repeat="(date, times) in activities as date">
+							<label class="date_label">{{date}}</label>
+							<div class="timeline-inner" ng-repeat="(time, actions) in times">
+								<time class="cbp_tmtime"><span>{{time}}</span></time>
+								<div class="cbp_tmicon"></div>
+								<div class="cbp_tmlabel">
+									<p ng-repeat="action in actions" style="padding: 15px 10px;">
+										{{action.action}}.
+										<br>{{action.note}}
+                                    </p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+
+				<!-- <div class="list">
+					<div class="item item-button-right file-item">
+						Activity 
+					</div>
+
+					<div class="item file-item" ng-repeat="activity in fileActivity">
+				      	<h2>{{activity.action}} by {{activity.user.name}}</h2>
+				      	<p>{{activity.prettyTimestamp}}</p>
+				    </div>
+				</div> -->
+			</ion-scroll>
+		</ion-content>
+	</ion-scroll>
+</ion-view>

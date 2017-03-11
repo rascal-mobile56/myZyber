@@ -1,0 +1,62 @@
+<ion-spinner class="loading-wrap" icon="spiral" ng-show="loading"></ion-spinner>
+
+<ion-view title="{{pageTitle}}" ng-show="!loading">
+	<ion-nav-buttons side="left">
+		<button class="button button-light button-clear no-animation" ng-click="myGoBack()">
+			<i class="ion-chevron-left"></i>
+		</button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+  		<a class="button button-light button-clear no-animation" ng-click="popover.show($event)"><i class="ion-navicon-round" style="font-size: 22px;"></i></a>
+  	</ion-nav-buttons>	
+  	
+	<ion-content class="has-header main-page" delegate-handle="mainScroll" overflow-scroll=”true” id="scrollWrapper">
+		<ion-scroll direction="y" style="right: 0;bottom: 0;left: 0; top:0; position: absolute;">
+			<div class="files-container">
+				<div class="list">
+					<!-- <div class="item file-item">
+						 {{file.name}}
+					</div> -->
+					<form ng-submit="form.submit(shareForm)" name="shareForm">
+						<div class="item item-button-right add-email-input">
+					    	<label class="item-input-wrap">
+					    	  	<input type="email" placeholder="Add Email" ng-model="form.email" ng-disabled="saving">
+					    	</label>
+						    <button class="button button-success button-add" ng-click="form.addEmail()" ng-disabled="saving">
+						      	<i class="ion-plus-circled" ng-if="!saving"></i>
+						      	<ion-spinner icon="spiral" ng-if="saving" style="margin-top:10px;"></ion-spinner>
+						    </button>
+					  	</div>
+						<!-- <div class="item file-item" style="text-align: right;">
+							<button class="btn-primary" ng-click="form.update()">
+								SAVE
+							</button>
+						</div> -->
+
+						<div class="item item-divider">
+							Shared with 
+						</div>
+						
+						<div class="empty-text-wrap" ng-show="!form.shares.length">
+							Not Shared with anyone
+						</div>
+
+						<div ng-show="form.shares.length">
+							<div class="item item-button-right item-icon-left item-icon-right" ng-repeat="share in form.shares" ng-class="{'flash-email-added' : share.isAdded, 'flash-email-deleted' : share.isDeleted}">
+								<i class="icon ion-android-person"></i> {{share.email}}
+								<div ng-repeat="device in share.devices">
+									<small ng-if="device.browser" class="more-share-info" >
+										{{device.browser}}
+									</small>
+								</div>
+							    <button class="button button-small" ng-click="form.remove($index)">
+							      	<i class="ion-android-close"></i>
+							    </button>
+						  	</div>
+						</div>	
+					</form>
+				</div>
+			 </div>
+		</ion-scroll>
+	</ion-content>
+</ion-view>

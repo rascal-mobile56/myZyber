@@ -1,0 +1,45 @@
+<ion-view id="imagePreviewModal" ng-controller="previewController">
+    <ion-header-bar style="background-color:#004177; background-image:none; padding: 0 6px;">
+        <div class="buttons buttons-left">
+            <a ng-click="closeModal()" class="button button-light button-clear no-animation">
+              <i class="ion-chevron-left"></i>
+            </a>
+        </div>
+        <div class="title title-left header-item">
+          {{file.name || 'file preview'  | truncateWithEllipsis:25}}<br>
+          <small>{{host}}</small>
+        </div>
+    </ion-header-bar>
+    <ion-content class="has-header">
+        <div class="preview-func">
+            <button class="preview-btn" ng-click="shareItem(file.uuid)"><i class="icon ion-share" style="margin-right: 10px;font-size: 20px;"></i>Share</button>
+            <button class="preview-btn" ng-click="deleteItem(file.thumbnailLink, file.uuid, file.isDirectory,file.name)"><i class="icon ion-trash-b" style="margin-right: 10px;font-size: 20px;"></i>Delete</button>
+        </div>
+        <div ng-if="file.fileType == 'document'">
+            <div ng-if="!file.isImage">
+                <file-preview fileid="fileid"><ion-spinner class="doc-loading-wrap" icon="spiral" ng-if="previewLoading1" id="previewloadingdisable"></ion-spinner></file-preview>
+            </div>
+            <div ng-if="file.isImage" class="image-preview">
+                <ion-scroll zooming="true" direction="xy" delegate-handle="zoom-pane" class="zoom-pane" min-zoom="1" scrollbar-x="false" scrollbar-y="false">
+                    <img ng-src="{{file.imageUrl}}">
+                </ion-scroll>
+            </div>
+        </div>
+        <div class="image-container" ng-if="file.fileType == 'image'">
+            <div class="bg-preview" style="background-image: url('{{previewFile}}');">
+                <ion-spinner class="loading-wrap" style="background:none;stroke:#fff;" icon="spiral" ng-if="previewLoading1"></ion-spinner>
+            </div>
+        </div>
+        <div class="image-container pad-bt-48" ng-if="file.fileType == 'audio'">
+            <div class="bg-preview" style="background-image: url('img/my-zyber-bg.jpg');">
+                <ion-spinner class="audio-loading-wrap" icon="spiral" ng-if="audioLoading"></ion-spinner>
+                <audio controls id="myAudio" preload="auto" class="bottom-align">
+                    <source src="{{audioUrl}}" type="audio/mpeg" />
+                    <source src="{{audioUrl}}" type="audio/wav" />
+                    <source src="{{audioUrl}}" type="audio/ogg" />
+                    Your browser does not support the audio tag.
+                </audio>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

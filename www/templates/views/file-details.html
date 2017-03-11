@@ -1,0 +1,135 @@
+<ion-view>
+	<ion-nav-buttons side="left">
+		<a ng-click="back()" class="back-text detail-back">
+			<i class="ion-android-arrow-back"></i>
+		</a>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<a class="btn-search" ng-click="popover.show($event)">
+			<i class="ion-android-more-vertical"></i>
+		</a>
+	</ion-nav-buttons>
+
+	<ion-spinner class="loading-wrap" icon="spiral" ng-show="loading"></ion-spinner>
+
+	<ion-tabs class="tabs-striped tabs-top menu-tabs tabs-background-positive tabs-color-custom" ng-show="!loading">
+	  <!-- Details Tab -->
+	  <ion-tab title="{{'details'|translate}}" >
+			<ion-nav-view>
+	  		<ion-view>
+					<ion-content >
+						<div class="h-banner animated fadeindown">
+							<div class="parallax bg-9" style="background-image: url('{{previewFile}}');">
+								<nav mfb-menu position="br" effect="zoomin" 
+									 active-icon="ion-more" resting-icon="ion-more" ng-click="fab_menu.show($event)" menu-state="fabState" class="fab-btn" style="z-index: 51" ng-show="canDownload && canPreview">
+								</nav>
+								<nav mfb-menu position="br" effect="zoomin" 
+									 active-icon="ion-eye" resting-icon="ion-eye" ng-click="loadFilePreview();" menu-state="fabState" class="fab-btn" style="z-index: 51" ng-show="!canDownload && canPreview">
+								</nav>
+								<nav mfb-menu position="br" effect="zoomin" 
+									 active-icon="ion-android-download" resting-icon="ion-android-download" ng-click="downloadFile();" menu-state="fabState" class="fab-btn" style="z-index: 51" ng-show="canDownload && !canPreview">
+								</nav>
+
+				    		<div class="banner-title" style="display: block;">{{file.name | truncateWithEllipsis:36}}</div>
+								<span class="img-wrap" ng-if="showFileIcon">
+									<img src="{{file.iconFile}}">
+			  					<!-- <img ng-switch-when="application/pdf" src="img/icons/pdf.png">
+									<img ng-switch-when="image/gif" src="img/icons/jpg.png">
+									<img ng-switch-when="image/png" src="img/icons/jpg.png">
+									<img ng-switch-when="image/jpeg" src="img/icons/jpg.png">
+									<img ng-switch-when="text/plain" src="img/icons/txt.png">
+									<img ng-switch-when="text/html" src="img/icons/html5.png">
+									<img ng-switch-when="application/zlib" src="img/icons/zip.png">
+									<img ng-switch-when="application/zip" src="img/icons/zip.png">
+									<img ng-switch-when="application/x-tika-ooxml" src="img/icons/ppt.png">
+									<img ng-switch-when="video/mp4" src="img/icons/mp4.png">
+									<img ng-switch-when="video/3gpp" src="img/icons/3gp.png">
+									<img ng-switch-when="video/ogg" src="img/icons/ogv.png">
+									<img ng-switch-when="video/webm" src="img/icons/webm.png">
+									<img ng-switch-when="video/mkv" src="img/icons/mkv.png">
+									<img ng-switch-when="video/quicktime" src="img/icons/video.png">
+									<img ng-switch-when="video/x-matroska" src="img/icons/mkv.png">
+									<img ng-switch-when="video/x-flv" src="img/icons/flv.png">
+									<img ng-switch-when="application/vnd.ms-excel" src="img/icons/xls.png">
+									<img ng-switch-when="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" src="img/icons/xls.png">
+									<img ng-switch-when="application/msword" src="img/icons/docs.png">
+									<img ng-switch-when="application/vnd.openxmlformats-officedocument.wordprocessingml.document" src="img/icons/docs.png">
+									<img ng-switch-when="audio/3ga" src="img/icons/3gp.png">
+									<img ng-switch-when="audio/x-m4a" src="img/icons/m4a.png">
+									<img ng-switch-when="audio/mp4" src="img/icons/mp4.png">
+									<img ng-switch-when="audio/x-aac" src="img/icons/aac.png">
+									<span ng-switch-when="application/octet-stream"> 
+										<span ng-switch="file.name.substr(file.name.length - 3)">
+											<img ng-switch-when=".ts"src="img/icons/ts.png">
+											<img ng-switch-when="rtx"src="img/icons/rtx.png">
+											<img ng-switch-when="ota"src="img/icons/ota.png">
+											<img ng-switch-default src="img/icons/blank.png">
+										</span>
+									</span>
+									<img ng-switch-when="audio/x-flac" src="img/icons/flac.png">
+									<img ng-switch-when="audio/mpeg" src="img/icons/mp3.png">
+									<img ng-switch-when="audio/midi" src="img/icons/mid.png">
+									<img ng-switch-when="audio/x-xmf" src="img/icons/xmf.png">
+									<img ng-switch-when="audio/mobile-xmf" src="img/icons/mxmf.png">
+									<img ng-switch-when="audio/x-rtttl" src="img/icons/rtttl.png">
+									<img ng-switch-when="audio/x-imelody" src="img/icons/imy.png">
+									<img ng-switch-when="audio/vorbis" src="img/icons/ogg.png">
+									<img ng-switch-when="audio/x-matroska" src="img/icons/mkv.png">
+									<img ng-switch-when="audio/x-wav" src="img/icons/wav.png">
+									<img ng-switch-when="application/vnd.openxmlformats-officedocument.presentationml.presentation" src="img/icons/pptx.png">
+									<img ng-switch-default src="img/icons/blank.png"> -->
+	  						</span>
+							</div>
+						</div>
+				 		<!-- <div class="file-name-header">{{file.name}}</div> -->
+				  	<ul class="list details-list" style="z-index: 0;">
+							<li class="item" style="border-top: none;">
+								<div class="item-header">{{"type"|translate}}</div>
+							  	<div class="item-content">{{file.mimeType}}</div>
+							</li>
+							<li class="item" style="border-top: none;">
+								<div class="item-header">{{"size"|translate}}</div>
+							  	<div class="item-content">{{file.size | bytes}}</div>
+							</li>
+							<li class="item" style="border-top: none;">
+								<div class="item-header">{{"location"|translate}}</div>
+							  	<div class="item-content">{{location}}</div>
+							</li>
+							<li class="item" style="border-top: none;">
+								<div class="item-header">{{"modified"|translate}}</div>
+							  	<div class="item-content">{{file.modifiedPretty | dateConversion}}</div>
+							</li>
+						</ul>
+					</ion-content>
+	  		</ion-view>
+			</ion-nav-view>
+  	</ion-tab>
+
+	  <!-- Activity Tab -->
+		<ion-tab title="{{'activity'|translate}}">
+    	<ion-nav-view>
+		  	<ion-view>
+		  		<div class="file-name-header has-header has-tabs-top">{{file.name | truncateWithEllipsis:36}}</div>
+					<ion-content class="has-header has-tabs-top has-subheader">
+			  
+			  		<ul class="list details-list">
+			  			<li class="item" ng-repeat="activity in fileActivity" style="border-bottom: 1px solid #eee">
+				  			<div class="item-header">{{activity.action}} {{"by"|translate}} {{activity.user.name}}</div>
+				  	  	<div class="item-content">{{activity.activityTimestamp | dateConversion}}</div>
+			  			</li>
+						</ul>
+
+						<div class="row" ng-if="fileActivityError">
+							<div class="list list-inset col col-100">
+								<div class="item alert-danger button-full">
+									{{fileActivityErrorMsg}}
+		    				</div>
+							</div>
+						</div>
+					</ion-content>
+	  		</ion-view>
+			</ion-nav-view>
+  	</ion-tab>
+  
+	</ion-tabs>
+</ion-view>

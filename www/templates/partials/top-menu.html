@@ -1,0 +1,20 @@
+<ion-popover-view class="menu-popover">
+    <ion-content>
+        <div class="list">
+    	<span class="item version-display border-none" href="javascript:;">
+        <span class="text">&nbsp;&nbsp;
+        	<small>{{'app_version'|translate}}&nbsp;<span app-version></span></small>
+        </span>
+      </span>
+            <!-- <a class="item pad-8-16 border-none" href="#/settings/show" ng-click="popover.hide();">
+              <i class="ion-gear-a"></i><span class="text" >&nbsp;&nbsp;{{'change.host'|translate}}</span>
+            </a> -->
+            <a class="item pad-8-16 border-none" href="#/change-passwd" ng-click="popover.hide();">
+                <i class="ion-locked"></i><span class="text" >&nbsp;&nbsp;{{'change.password'|translate}}</span>
+            </a>
+            <a class="item pad-8-16 border-none" href="javascript:;" ng-click="preLogout();popover.hide();">
+                <i class="ion-log-out"></i><span class="text">&nbsp;&nbsp;{{'logout'|translate}}</span>
+            </a>
+        </div>
+    </ion-content>
+</ion-popover-view>

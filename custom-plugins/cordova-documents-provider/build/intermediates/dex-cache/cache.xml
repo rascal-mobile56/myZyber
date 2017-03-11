@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/sarika/Sites/projects/test-external-storage/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="/Users/sarika/Sites/projects/test-external-storage/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.1.1_91419fecf604f0aa9cd116d8b680d93b02d4fdbc.jar" />
+    </item>
+    <item
+        jar="/Users/sarika/Sites/projects/test-external-storage/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="/Users/sarika/Sites/projects/test-external-storage/app/build/intermediates/pre-dexed/debug/com.android.support-design-23.1.1_6f59f39b040dd17f9d0ff1a96a4c00d96e908209.jar" />
+    </item>
+    <item
+        jar="/Users/sarika/Sites/projects/test-external-storage/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="/Users/sarika/Sites/projects/test-external-storage/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-23.1.1_b9a974bbaad67acf0aa4c9a4223dab6bab97e86a.jar" />
+    </item>
+    <item
+        jar="/Users/sarika/Sites/projects/test-external-storage/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/Users/sarika/Sites/projects/test-external-storage/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.1.1_24dccfd615d6d0993a85debadf40c33dd5bda315.jar" />
+    </item>
+    <item
+        jar="/Users/sarika/Sites/projects/test-external-storage/app/build/intermediates/exploded-aar/com.sromku/simple-storage/1.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="0470f9a12eaa264d9998d4df37505d92c043e8d1">
+        <dex dex="/Users/sarika/Sites/projects/test-external-storage/app/build/intermediates/pre-dexed/debug/com.sromku-simple-storage-1.2.0_f81b5fa0e4d7976a759f053028bed1ba067e94e1.jar" />
+    </item>
+    <item
+        jar="/Users/sarika/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="/Users/sarika/Sites/projects/test-external-storage/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1_a0147e712dab841ae5e785e5fd807603fc094c16.jar" />
+    </item>
+    <item
+        jar="/Users/sarika/Sites/projects/test-external-storage/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/Users/sarika/Sites/projects/test-external-storage/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1_6de2c0df104f11d7240619808eb65a324a607b8f.jar" />
+    </item>
+
+</items>
